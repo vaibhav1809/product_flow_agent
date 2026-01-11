@@ -1,7 +1,7 @@
 ### To clip the video, from time to to time locally using ffmeg
 
 ```bash
-ffmpeg -i full_walkthrough.mp4 -ss 00:00:30 -to 00:02:30 -c copy clip.mp4
+ffmpeg -i zapmail_product_demo.mp4 -ss 00:01:08 -to 00:01:38 -c copy ./../clips/send_receive_mails.mp4
 ```
 
 ### Costs:
