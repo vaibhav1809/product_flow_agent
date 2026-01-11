@@ -1,0 +1,153 @@
+{
+  "inputs": {
+    "app_name": "TestApp",
+    "transcript": "User logs in. User logs out.",
+    "metadata": {
+      "source": "cli"
+    }
+  },
+  "artifacts": {
+    "ingest": {
+      "app": {
+        "id": "app_4a19557dc1b9",
+        "name": "TestApp",
+        "description": ""
+      },
+      "transcript": "User logs in. User logs out.",
+      "metadata": {
+        "source": "cli"
+      }
+    },
+    "segment": {
+      "segments": [
+        "User logs in",
+        "User logs out"
+      ]
+    },
+    "clip": {
+      "clips": [
+        {
+          "id": "clip_81fac9e6e016",
+          "index": 0,
+          "text": "User logs in"
+        },
+        {
+          "id": "clip_9cde9250969c",
+          "index": 1,
+          "text": "User logs out"
+        }
+      ]
+    },
+    "extract": {
+      "app": {
+        "id": "app_4a19557dc1b9",
+        "name": "TestApp",
+        "description": ""
+      },
+      "features": [
+        {
+          "id": "feature_e010e23effb5",
+          "name": "User logs in",
+          "description": "User logs in",
+          "start_timestamp": "",
+          "end_timestamp": "",
+          "flows": [],
+          "screens": [],
+          "components": [],
+          "entry_points": [],
+          "success_criteria": [],
+          "failure_criteria": []
+        },
+        {
+          "id": "feature_05c8b30e0c6b",
+          "name": "User logs out",
+          "description": "User logs out",
+          "start_timestamp": "",
+          "end_timestamp": "",
+          "flows": [],
+          "screens": [],
+          "components": [],
+          "entry_points": [],
+          "success_criteria": [],
+          "failure_criteria": []
+        }
+      ],
+      "transcript": "User logs in. User logs out.",
+      "metadata": {
+        "source": "cli"
+      }
+    },
+    "normalize": {
+      "app": {
+        "id": "app_4a19557dc1b9",
+        "name": "TestApp",
+        "description": ""
+      },
+      "features": [
+        {
+          "id": "feature_e010e23effb5",
+          "name": "User logs in",
+          "description": "User logs in",
+          "start_timestamp": "",
+          "end_timestamp": "",
+          "flows": [],
+          "screens": [],
+          "components": [],
+          "entry_points": [],
+          "success_criteria": [],
+          "failure_criteria": []
+        },
+        {
+          "id": "feature_05c8b30e0c6b",
+          "name": "User logs out",
+          "description": "User logs out",
+          "start_timestamp": "",
+          "end_timestamp": "",
+          "flows": [],
+          "screens": [],
+          "components": [],
+          "entry_points": [],
+          "success_criteria": [],
+          "failure_criteria": []
+        }
+      ],
+      "transcript": "User logs in. User logs out.",
+      "metadata": {
+        "source": "cli"
+      }
+    },
+    "repository_index": {
+      "items": [
+        {
+          "id": "feature_e010e23effb5",
+          "name": "User logs in",
+          "description": "User logs in",
+          "app_id": "app_4a19557dc1b9",
+          "app_name": "TestApp"
+        },
+        {
+          "id": "feature_05c8b30e0c6b",
+          "name": "User logs out",
+          "description": "User logs out",
+          "app_id": "app_4a19557dc1b9",
+          "app_name": "TestApp"
+        }
+      ]
+    },
+    "embed": {
+      "status": "skipped",
+      "feature_count": 2
+    }
+  },
+  "metadata": {
+    "execution_order": [
+      "ingest",
+      "segment",
+      "clip",
+      "extract",
+      "normalize",
+      "repository_index",
+      "embed"
+    ]
+  }
+}

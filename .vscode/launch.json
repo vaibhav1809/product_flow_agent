@@ -1,0 +1,59 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Pipeline: create_repository",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "src.pipeline.run",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "justMyCode": true,
+      "envFile": "${workspaceFolder}/.env",
+      "args": [
+        "--pipeline-type",
+        "repository",
+        "--app-name",
+        "Zapmail",
+        "--video_path",
+        "/Users/vaibhav/Documents/codes/new_products/product_flow_agent/data/clips/send_receive_mails.mp4"
+      ]
+    },
+    {
+      "name": "Pipeline: run (input JSON)",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "src.pipeline.run",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "justMyCode": true,
+      "envFile": "${workspaceFolder}/.env",
+      "args": [
+        "--pipeline-type",
+        "repository",
+        "--input-json",
+        "data/inputs.json",
+        "--output",
+        "data/product_context.json"
+      ]
+    },
+    {
+      "name": "Pipeline: query (repository context)",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "src.pipeline.run",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "justMyCode": true,
+      "envFile": "${workspaceFolder}/.env",
+      "args": [
+        "--pipeline-type",
+        "query",
+        "--query",
+        "send emails",
+        "--repo-context",
+        "data/repository_context.json"
+      ]
+    }
+  ]
+}

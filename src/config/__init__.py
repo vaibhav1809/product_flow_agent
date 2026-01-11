@@ -1,2 +1,5 @@
-from .logging import logger as log
-from .config import CONFIG
+import config
+from .llm_clients import LLMClients as llm_client
+
+
+__all__ = ['llm_client']
