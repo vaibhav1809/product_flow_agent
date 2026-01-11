@@ -1,8 +1,6 @@
 from __future__ import annotations
 
-import base64
 import json
-import mimetypes
 from pathlib import Path
 from typing import Any
 
@@ -13,6 +11,8 @@ from pydantic import BaseModel, Field
 
 from src.config import llm_client
 from src.pipeline.base import Node, PipelineContext
+
+from .utils import coerce_str, extract_json, load_video_base64
 
 SYSTEM_PROMPT = (
     "You are a product analyst extracting structured app information from a demo "
@@ -56,12 +56,12 @@ class AppFeaturesParser(BaseOutputParser[ExtractionResult]):
         )
 
     def parse(self, text: str) -> ExtractionResult:
-        payload = json.loads(_extract_json(text))
+        payload = json.loads(extract_json(text))
         app_payload = payload.get("app") or {}
         app = AppInfo(
-            id=_coerce_str(app_payload.get("id")),
-            name=_coerce_str(app_payload.get("name")),
-            description=_coerce_str(app_payload.get("description")),
+            id=coerce_str(app_payload.get("id")),
+            name=coerce_str(app_payload.get("name")),
+            description=coerce_str(app_payload.get("description")),
         )
 
         features_payload = payload.get("features") or []
@@ -71,11 +71,11 @@ class AppFeaturesParser(BaseOutputParser[ExtractionResult]):
                 if isinstance(item, dict):
                     features.append(
                         FeatureInfo(
-                            id=_coerce_str(item.get("id")),
-                            name=_coerce_str(item.get("name")),
-                            description=_coerce_str(item.get("description")),
-                            start_timestamp=_coerce_str(item.get("start_timestamp")),
-                            end_timestamp=_coerce_str(item.get("end_timestamp")),
+                            id=coerce_str(item.get("id")),
+                            name=coerce_str(item.get("name")),
+                            description=coerce_str(item.get("description")),
+                            start_timestamp=coerce_str(item.get("start_timestamp")),
+                            end_timestamp=coerce_str(item.get("end_timestamp")),
                         )
                     )
 
@@ -94,7 +94,7 @@ class FeatureExtractor:
     def _build_chain(self) -> Any:
         def build_messages(inputs: dict[str, str]) -> list[SystemMessage | HumanMessage]:
             video_path = inputs["video_path"]
-            mime_type, video_base64 = _load_video_base64(video_path)
+            mime_type, video_base64 = load_video_base64(video_path)
             system_text = SYSTEM_PROMPT.format(
                 format_instructions=self.parser.get_format_instructions()
             )
@@ -129,38 +129,3 @@ class FeatureExtractorNode(Node):
     def run(self, context: PipelineContext) -> ExtractionResult:
         inputs = FeatureExtractorInputs.model_validate(context.inputs)
         return self.extractor.extract(inputs.video_path)
-
-
-def _guess_video_mime_type(video_path: str) -> str:
-    mime_type, _ = mimetypes.guess_type(video_path)
-    return mime_type or "video/mp4"
-
-
-def _load_video_base64(video_path: str | Path) -> tuple[str, str]:
-    path = Path(video_path)
-    if not path.exists():
-        raise FileNotFoundError(f"Video file not found: {path}")
-    mime_type = _guess_video_mime_type(str(path))
-    video_base64 = base64.b64encode(path.read_bytes()).decode("utf-8")
-    return mime_type, video_base64
-
-
-def _extract_json(text: str) -> str:
-    cleaned = text.strip()
-    if cleaned.startswith("```"):
-        fence = "```"
-        start = cleaned.find(fence)
-        end = cleaned.rfind(fence)
-        if end > start:
-            block = cleaned[start + len(fence): end]
-            block = block.lstrip()
-            if block.startswith("json"):
-                block = block[len("json"):]
-            return block.strip()
-    return cleaned
-
-
-def _coerce_str(value: Any) -> str:
-    if value is None:
-        return ""
-    return str(value)
