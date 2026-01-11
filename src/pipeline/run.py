@@ -20,7 +20,7 @@ def build_repository_pipeline() -> Pipeline:
             # SplitVideoNode(),
             ScreenExtractorNode(),
             FlowExtractorNode(),
-            # InteractionExtractorNode()
+            InteractionExtractorNode()
         ]
     )
 
