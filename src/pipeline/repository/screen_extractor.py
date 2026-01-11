@@ -111,7 +111,7 @@ class ScreenExtractorInputs(BaseModel):
 
 class ScreenExtractorNode(Node):
     name: str = "screen_extractor"
-    depends_on: list[str] = []
+    depends_on: list[str] = ["split_video"]
     extractor: ScreenExtractor = Field(default_factory=ScreenExtractor)
 
     def run(self, context: PipelineContext) -> ScreenExtractionResult:

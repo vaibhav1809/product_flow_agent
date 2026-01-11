@@ -2,15 +2,19 @@ from __future__ import annotations
 
 import argparse
 import json
+import logging
+from pathlib import Path
 from typing import Any
 
 
 import src.config
+from src.config.logging import LOGGING_CONFIG
 
 from .base import PipelineContext, PipelineError
 from .runner import Pipeline
 
 from src.pipeline.repository import *
+from src.storage import JsonStore
 
 
 def build_repository_pipeline() -> Pipeline:
@@ -18,9 +22,9 @@ def build_repository_pipeline() -> Pipeline:
         nodes=[
             FeatureExtractorNode(),
             SplitVideoNode(),
-            # ScreenExtractorNode(),
-            # FlowExtractorNode(),
-            # InteractionExtractorNode()
+            ScreenExtractorNode(),
+            FlowExtractorNode(),
+            InteractionExtractorNode()
         ]
     )
 
@@ -72,7 +76,13 @@ def main() -> None:
     parser.add_argument("--video_path")
     args = parser.parse_args()
 
+    logging.basicConfig(**LOGGING_CONFIG)
+
     context = run_pipeline(_load_inputs(args), args.pipeline_type)
+
+    if args.pipeline_type == "repository":
+        output_path = "data/json/repository_context.json"
+        JsonStore(path=Path(output_path)).save_context(context)
 
     print(json.dumps(context.to_jsonable(), indent=2))
 

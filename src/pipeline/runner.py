@@ -1,8 +1,13 @@
 from __future__ import annotations
 
+import logging
+
 from pydantic import BaseModel, ConfigDict, Field
 
 from .base import Node, PipelineContext, PipelineError
+
+
+logger = logging.getLogger(__name__)
 
 
 class Pipeline(BaseModel):
@@ -13,8 +18,19 @@ class Pipeline(BaseModel):
     def run(self, context: PipelineContext) -> PipelineContext:
         order = self._resolve_order()
         context.metadata["execution_order"] = [node.name for node in order]
-        for node in order:
-            context.set_artifact(node.name, node.run(context))
+        total = len(order)
+        logger.info("Starting pipeline with %s node(s).", total)
+        for index, node in enumerate(order, start=1):
+            logger.info("Running node %s/%s: %s", index, total, node.name)
+            node.log_start(context)
+            try:
+                result = node.run(context)
+            except Exception as exc:
+                node.log_error(context, exc)
+                raise
+            node.log_end(context, result)
+            context.set_artifact(node.name, result)
+        logger.info("Pipeline complete.")
         return context
 
     def _resolve_order(self) -> list[Node]:

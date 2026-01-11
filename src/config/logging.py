@@ -1,3 +1,8 @@
 import logging
 
-logger = logging.getLogger("uvicorn")
+LOGGING_CONFIG = {
+    "level": logging.INFO,
+    "format": "%(levelname)s %(message)s",
+}
+
+

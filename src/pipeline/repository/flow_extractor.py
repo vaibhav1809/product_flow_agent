@@ -121,7 +121,7 @@ class FlowExtractorInputs(BaseModel):
 
 class FlowExtractorNode(Node):
     name: str = "flow_extractor"
-    depends_on: list[str] = []
+    depends_on: list[str] = ["split_video"]
     extractor: FlowExtractor = Field(default_factory=FlowExtractor)
 
     def run(self, context: PipelineContext) -> FlowExtractionResult:

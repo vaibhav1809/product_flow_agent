@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import logging
 from typing import Any
 
 from pydantic import BaseModel, ConfigDict, Field
@@ -26,11 +27,23 @@ class PipelineContext(BaseModel):
         }
 
 
+logger = logging.getLogger(__name__)
+
+
 class Node(BaseModel):
     name: str
     depends_on: list[str] = Field(default_factory=list)
 
     model_config = ConfigDict(arbitrary_types_allowed=True)
+
+    def log_start(self, context: PipelineContext) -> None:
+        logger.info("Starting node: %s", self.name)
+
+    def log_end(self, context: PipelineContext, result: Any) -> None:
+        logger.info("Finished node: %s", self.name)
+
+    def log_error(self, context: PipelineContext, error: Exception) -> None:
+        logger.exception("Node failed: %s", self.name)
 
     def run(self, context: PipelineContext) -> Any:
         raise NotImplementedError

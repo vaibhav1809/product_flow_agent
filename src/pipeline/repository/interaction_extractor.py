@@ -122,7 +122,7 @@ class InteractionExtractorInputs(BaseModel):
 
 class InteractionExtractorNode(Node):
     name: str = "interaction_extractor"
-    depends_on: list[str] = []
+    depends_on: list[str] = ["split_video"]
     extractor: InteractionExtractor = Field(default_factory=InteractionExtractor)
 
     def run(self, context: PipelineContext) -> InteractionExtractionResult:
