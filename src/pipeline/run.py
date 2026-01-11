@@ -17,10 +17,10 @@ def build_repository_pipeline() -> Pipeline:
     return Pipeline(
         nodes=[
             FeatureExtractorNode(),
-            # SplitVideoNode(),
-            ScreenExtractorNode(),
-            FlowExtractorNode(),
-            InteractionExtractorNode()
+            SplitVideoNode(),
+            # ScreenExtractorNode(),
+            # FlowExtractorNode(),
+            # InteractionExtractorNode()
         ]
     )
 
