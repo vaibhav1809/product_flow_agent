@@ -20,25 +20,7 @@
       ]
     },
     {
-      "name": "Pipeline: run (input JSON)",
-      "type": "debugpy",
-      "request": "launch",
-      "module": "src.pipeline.run",
-      "cwd": "${workspaceFolder}",
-      "console": "integratedTerminal",
-      "justMyCode": true,
-      "envFile": "${workspaceFolder}/.env",
-      "args": [
-        "--pipeline-type",
-        "repository",
-        "--input-json",
-        "data/inputs.json",
-        "--output",
-        "data/product_context.json"
-      ]
-    },
-    {
-      "name": "Pipeline: query (repository context)",
+      "name": "Pipeline: query",
       "type": "debugpy",
       "request": "launch",
       "module": "src.pipeline.run",
@@ -50,9 +32,7 @@
         "--pipeline-type",
         "query",
         "--query",
-        "send emails",
-        "--repo-context",
-        "data/repository_context.json"
+        "add an attachment to the email"
       ]
     }
   ]

@@ -79,6 +79,9 @@ class ScreenExtractor:
     def extract(self, video_path: str | Path) -> ScreenExtractionResult:
         return self.chain.invoke({"video_path": str(video_path)})
 
+    async def aextract(self, video_path: str | Path) -> ScreenExtractionResult:
+        return await self.chain.ainvoke({"video_path": str(video_path)})
+
     def _build_chain(self) -> Any:
         def build_messages(inputs: dict[str, str]) -> list[SystemMessage | HumanMessage]:
             video_path = inputs["video_path"]
@@ -117,6 +120,10 @@ class ScreenExtractorNode(Node):
     def run(self, context: PipelineContext) -> ScreenExtractionResult:
         inputs = ScreenExtractorInputs.model_validate(context.inputs)
         return self.extractor.extract(inputs.video_path)
+
+    async def arun(self, context: PipelineContext) -> ScreenExtractionResult:
+        inputs = ScreenExtractorInputs.model_validate(context.inputs)
+        return await self.extractor.aextract(inputs.video_path)
 
 
 def _coerce_int(value: Any, default: int) -> int:

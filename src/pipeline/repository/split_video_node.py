@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import asyncio
 import re
 import subprocess
 from pathlib import Path
@@ -92,6 +93,9 @@ class SplitVideoNode(Node):
             "errors": errors,
             "clips_dir": str(CLIPS_DIR),
         }
+
+    async def arun(self, context: PipelineContext) -> dict[str, Any]:
+        return await asyncio.to_thread(self.run, context)
 
 
 def _iter_features(payload: Any) -> list[Any]:

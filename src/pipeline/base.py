@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import asyncio
 import logging
 from typing import Any
 
@@ -46,6 +47,16 @@ class Node(BaseModel):
         logger.exception("Node failed: %s", self.name)
 
     def run(self, context: PipelineContext) -> Any:
+        raise NotImplementedError
+
+    async def arun(self, context: PipelineContext) -> Any:
+        return await asyncio.to_thread(self.run, context)
+
+
+class ConditionalNode(Node):
+    route_map: dict[str, str] = Field(default_factory=dict)
+
+    def route(self, context: PipelineContext) -> str:
         raise NotImplementedError
 
 

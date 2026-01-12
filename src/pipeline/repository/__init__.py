@@ -3,6 +3,7 @@ from .flow_extractor import FlowExtractorNode
 from .screen_extractor import ScreenExtractorNode
 from .interaction_extractor import InteractionExtractorNode
 from .split_video_node import SplitVideoNode
+from .export_node import ExportNode
 
 __all__ = [
     "FeatureExtractorNode",
@@ -10,4 +11,5 @@ __all__ = [
     "ScreenExtractorNode",
     "InteractionExtractorNode",
     "SplitVideoNode",
+    "ExportNode",
 ]
