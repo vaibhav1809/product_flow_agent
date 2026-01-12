@@ -12,7 +12,9 @@ from src.config.logging import LOGGING_CONFIG
 from .base import PipelineContext, PipelineError
 from .runner import Pipeline
 
+from src.pipeline.query import *
 from src.pipeline.repository import *
+
 
 def build_repository_pipeline() -> Pipeline:
     return Pipeline(
@@ -30,10 +32,13 @@ def build_repository_pipeline() -> Pipeline:
 def build_query_pipeline() -> Pipeline:
     return Pipeline(
         nodes=[
-            # QueryInputNode(),
-            # QueryLoadRepositoryNode(),
-            # QuerySearchNode(),
-            # QueryRankNode(),
+            QueryPlanNode(),
+            # LoadRepositoryNode(),
+            # RetrieveEvidenceNode(),
+            # DecideDepthNode(),
+            # ExpandEvidenceNode(),
+            # ProjectResponseNode(),
+            # FinalGuardrailsNode(),
         ]
     )
 
@@ -72,6 +77,7 @@ def main() -> None:
     parser.add_argument("--pipeline-type", choices=["repository", "query"], default="repository")
     parser.add_argument("--app-name")
     parser.add_argument("--video_path")
+    parser.add_argument("--query")
     args = parser.parse_args()
 
     logging.basicConfig(**LOGGING_CONFIG)

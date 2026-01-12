@@ -32,7 +32,7 @@
         "--pipeline-type",
         "query",
         "--query",
-        "add an attachment to the email"
+        "add a feature of attaching a file to the email before sending"
       ]
     }
   ]
