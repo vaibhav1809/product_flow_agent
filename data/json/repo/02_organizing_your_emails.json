@@ -1,0 +1,313 @@
+{
+  "source": {
+    "app_name": "Zapmail",
+    "video_path": "/Users/vaibhav/Documents/codes/new_products/product_flow_agent/data/clips/02_organizing_your_emails.mp4",
+    "metadata": {
+      "source": "cli"
+    }
+  },
+  "app": {
+    "id": "zapmail",
+    "name": "Zapmail",
+    "description": "An email client designed to organize communications by separating important emails from general ones using focused spaces and contact management."
+  },
+  "features": [
+    {
+      "id": "focused_space",
+      "name": "Focused Space",
+      "description": "A dedicated VIP section for important conversations, containing emails from workspace members and saved contacts.",
+      "start_timestamp": "00:08",
+      "end_timestamp": "00:18"
+    },
+    {
+      "id": "general_space",
+      "name": "General Space",
+      "description": "A separate inbox space where all emails not classified as focused or from saved contacts are automatically sorted.",
+      "start_timestamp": "00:19",
+      "end_timestamp": "00:24"
+    },
+    {
+      "id": "save_contact",
+      "name": "Save Contact",
+      "description": "The ability to manually save a sender as a contact via their profile, ensuring their future emails appear in the Focused Space.",
+      "start_timestamp": "00:25",
+      "end_timestamp": "00:31"
+    },
+    {
+      "id": "sidebar_notifications",
+      "name": "Sidebar Notifications",
+      "description": "Visual indicators in the sidebar that highlight where attention is needed and where new activity has occurred.",
+      "start_timestamp": "00:33",
+      "end_timestamp": "00:38"
+    }
+  ],
+  "clips": [
+    {
+      "feature_id": "focused_space",
+      "feature_name": "Focused Space",
+      "start_timestamp": "00:00:08",
+      "end_timestamp": "00:00:18",
+      "clip_path": "data/clips/01_focused_space.mp4"
+    },
+    {
+      "feature_id": "general_space",
+      "feature_name": "General Space",
+      "start_timestamp": "00:00:19",
+      "end_timestamp": "00:00:24",
+      "clip_path": "data/clips/02_general_space.mp4"
+    },
+    {
+      "feature_id": "save_contact",
+      "feature_name": "Save Contact",
+      "start_timestamp": "00:00:25",
+      "end_timestamp": "00:00:31",
+      "clip_path": "data/clips/03_save_contact.mp4"
+    },
+    {
+      "feature_id": "sidebar_notifications",
+      "feature_name": "Sidebar Notifications",
+      "start_timestamp": "00:00:33",
+      "end_timestamp": "00:00:38",
+      "clip_path": "data/clips/04_sidebar_notifications.mp4"
+    }
+  ],
+  "screens": [
+    {
+      "order": 1,
+      "name": "Focused Inbox",
+      "description": "The main dashboard view showing the email inbox with the 'Focused' tab active, displaying a list of priority conversations.",
+      "start_timestamp": "00:07",
+      "end_timestamp": "00:19",
+      "key_elements": [
+        "Sidebar navigation",
+        "Focused tab",
+        "Email list",
+        "Conversation preview pane"
+      ]
+    },
+    {
+      "order": 2,
+      "name": "General Inbox",
+      "description": "The inbox view after switching to the 'General' tab, displaying a list of other emails.",
+      "start_timestamp": "00:19",
+      "end_timestamp": "00:24",
+      "key_elements": [
+        "General tab",
+        "Email list",
+        "Search bar"
+      ]
+    },
+    {
+      "order": 3,
+      "name": "Email Detail View",
+      "description": "The detailed view of a specific email thread opened from the General list.",
+      "start_timestamp": "00:24",
+      "end_timestamp": "00:26",
+      "key_elements": [
+        "Email subject header",
+        "Sender details",
+        "Email body content",
+        "Attachments section"
+      ]
+    },
+    {
+      "order": 4,
+      "name": "Contact Profile Panel",
+      "description": "A slide-out panel on the right side showing profile details for the email sender.",
+      "start_timestamp": "00:26",
+      "end_timestamp": "00:29",
+      "key_elements": [
+        "Profile avatar",
+        "Contact name",
+        "Save Contact button",
+        "Subject Messages history"
+      ]
+    },
+    {
+      "order": 5,
+      "name": "Save Contact Form",
+      "description": "An editing form that appears to save the contact's information.",
+      "start_timestamp": "00:29",
+      "end_timestamp": "00:31",
+      "key_elements": [
+        "First Name input",
+        "Last Name input",
+        "Email input",
+        "Save button",
+        "Cancel button"
+      ]
+    },
+    {
+      "order": 6,
+      "name": "Inbox with Notifications",
+      "description": "The inbox view highlighting notification badges on specific email threads in the sidebar.",
+      "start_timestamp": "00:31",
+      "end_timestamp": "00:41",
+      "key_elements": [
+        "Red notification badges with counts",
+        "Email list",
+        "Sidebar navigation"
+      ]
+    }
+  ],
+  "flow": {
+    "flow_title": "Organizing Emails and Managing Contacts",
+    "flow_goal": "To demonstrate how to navigate between email contexts (Focused vs. General), view messages, and save new contacts from the email interface.",
+    "steps": [
+      {
+        "step_number": 1,
+        "title": "Access Focused Inbox",
+        "description": "The user switches the view to see high-priority emails.",
+        "user_action": "Click on the 'Focused' tab in the left sidebar navigation.",
+        "ui_context": "Main email interface showing the inbox list.",
+        "system_response": "The email list filters to show only emails from workspace members and saved contacts.",
+        "start_timestamp": "00:00:07",
+        "end_timestamp": "00:00:12"
+      },
+      {
+        "step_number": 2,
+        "title": "Open Focused Email",
+        "description": "The user selects a specific email from the Focused list to read.",
+        "user_action": "Click on the email thread from 'Dilki Fernando'.",
+        "ui_context": "Focused email list.",
+        "system_response": "The selected email content loads in the main reading pane on the right.",
+        "start_timestamp": "00:00:13",
+        "end_timestamp": "00:00:18"
+      },
+      {
+        "step_number": 3,
+        "title": "Access General Inbox",
+        "description": "The user switches the view to see other emails.",
+        "user_action": "Click on the 'General' tab in the left sidebar navigation.",
+        "ui_context": "Top navigation bar above the email list.",
+        "system_response": "The email list updates to show general emails, newsletters, and unsaved contacts.",
+        "start_timestamp": "00:00:19",
+        "end_timestamp": "00:00:23"
+      },
+      {
+        "step_number": 4,
+        "title": "Open General Email",
+        "description": "The user opens an email from the General list.",
+        "user_action": "Click on the email thread from 'zapmailhq'.",
+        "ui_context": "General email list.",
+        "system_response": "The email content (a receipt) loads in the main reading pane.",
+        "start_timestamp": "00:00:24",
+        "end_timestamp": "00:00:25"
+      },
+      {
+        "step_number": 5,
+        "title": "Access Contact Options",
+        "description": "The user initiates the process to save the sender as a contact.",
+        "user_action": "Click on the profile header bar in the right-hand information sidebar.",
+        "ui_context": "Right sidebar displaying sender profile information.",
+        "system_response": "A dropdown menu appears with options for the contact.",
+        "start_timestamp": "00:00:26",
+        "end_timestamp": "00:00:27"
+      },
+      {
+        "step_number": 6,
+        "title": "Select Save Contact",
+        "description": "The user chooses to save the current sender.",
+        "user_action": "Click 'Save Contact' from the dropdown menu.",
+        "ui_context": "Profile dropdown menu.",
+        "system_response": "The view changes to an 'Edit Contact' form overlay.",
+        "start_timestamp": "00:00:28",
+        "end_timestamp": "00:00:29"
+      },
+      {
+        "step_number": 7,
+        "title": "Confirm Contact Save",
+        "description": "The user finalizes saving the contact information.",
+        "user_action": "Click the 'Save' button at the bottom right of the form.",
+        "ui_context": "Edit Contact form overlay.",
+        "system_response": "The form closes, and the contact is saved to the system.",
+        "start_timestamp": "00:00:30",
+        "end_timestamp": "00:00:31"
+      },
+      {
+        "step_number": 8,
+        "title": "View Notification",
+        "description": "The user navigates to a conversation with a new activity indicator.",
+        "user_action": "Click on the contact 'Mark Zap' which displays a red notification badge.",
+        "ui_context": "Left sidebar email list.",
+        "system_response": "The application opens the conversation thread associated with the notification.",
+        "start_timestamp": "00:00:36",
+        "end_timestamp": "00:00:39"
+      }
+    ]
+  },
+  "interactions": [
+    {
+      "order": 1,
+      "name": "Switch to General Tab",
+      "interaction_type": "Navigation",
+      "rationale": "To view emails that are not categorized as 'Focused' or VIP, as explained by the narrator.",
+      "description": "The user moves the cursor to the sidebar and clicks on the 'General' tab.",
+      "user_action": "Click",
+      "ui_context": "Sidebar navigation menu, 'General' tab",
+      "system_response": "The email list view updates to display emails categorized under the General space.",
+      "start_timestamp": "00:07",
+      "end_timestamp": "00:08"
+    },
+    {
+      "order": 2,
+      "name": "Open Email",
+      "interaction_type": "Selection",
+      "rationale": "To view the contents of a specific email within the General list.",
+      "description": "The user clicks on an email from 'zapmailhq@gmail...' in the list.",
+      "user_action": "Click",
+      "ui_context": "Email list view",
+      "system_response": "The selected email opens in the main reading pane, displaying the message details.",
+      "start_timestamp": "00:24",
+      "end_timestamp": "00:25"
+    },
+    {
+      "order": 3,
+      "name": "Open Profile Details",
+      "interaction_type": "View Detail",
+      "rationale": "To access the sender's profile information and options, specifically to save them as a contact.",
+      "description": "The user clicks on the top header bar of the open email view.",
+      "user_action": "Click",
+      "ui_context": "Email detail view header",
+      "system_response": "A profile information panel slides in from the right side of the screen.",
+      "start_timestamp": "00:26",
+      "end_timestamp": "00:27"
+    },
+    {
+      "order": 4,
+      "name": "Initiate Save Contact",
+      "interaction_type": "Command",
+      "rationale": "To start the process of adding the current email sender to the saved contacts list.",
+      "description": "The user clicks the 'Save Contact' link/button within the profile side panel.",
+      "user_action": "Click",
+      "ui_context": "Right-side profile panel",
+      "system_response": "The panel interface updates, revealing a 'Save' button at the bottom to confirm the action.",
+      "start_timestamp": "00:28",
+      "end_timestamp": "00:29"
+    },
+    {
+      "order": 5,
+      "name": "Confirm Save Contact",
+      "interaction_type": "Form Submission",
+      "rationale": "To finalize the action of saving the new contact.",
+      "description": "The user clicks the 'Save' button located at the bottom of the profile panel.",
+      "user_action": "Click",
+      "ui_context": "Footer of the right-side profile panel",
+      "system_response": "The system saves the contact (implied as the video transitions).",
+      "start_timestamp": "00:30",
+      "end_timestamp": "00:31"
+    },
+    {
+      "order": 6,
+      "name": "Open Unread Email",
+      "interaction_type": "Selection",
+      "rationale": "To check a specific email that has a notification indicator, showing where attention is needed.",
+      "description": "The user clicks on an email from 'Mark Zap' in the list.",
+      "user_action": "Click",
+      "ui_context": "Email list view",
+      "system_response": "The email content from Mark Zap loads in the main view.",
+      "start_timestamp": "00:35",
+      "end_timestamp": "00:36"
+    }
+  ]
+}

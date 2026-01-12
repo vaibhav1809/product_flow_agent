@@ -66,7 +66,7 @@ class SplitVideoNode(Node):
             output_path = CLIPS_DIR / file_name
 
             try:
-                _run_ffmpeg(video_path, start_ts, end_ts, output_path)
+                # _run_ffmpeg(video_path, start_ts, end_ts, output_path)
                 clips.append(
                     {
                         "feature_id": feature_id,

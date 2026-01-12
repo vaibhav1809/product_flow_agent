@@ -1,0 +1,263 @@
+{
+  "source": {
+    "app_name": "Zapmail",
+    "video_path": "/Users/vaibhav/Documents/codes/new_products/product_flow_agent/data/clips/01_sending_and_receiving_emails.mp4",
+    "metadata": {
+      "source": "cli"
+    }
+  },
+  "app": {
+    "id": "zapmail",
+    "name": "Zapmail",
+    "description": "An email client designed for sending and receiving emails with productivity features like draft stacking."
+  },
+  "features": [
+    {
+      "id": "compose-and-send-email",
+      "name": "Compose and Send Email",
+      "description": "Users can send emails by clicking the compose button, entering the recipient's address, adding a subject, and writing the message.",
+      "start_timestamp": "00:11",
+      "end_timestamp": "00:22"
+    },
+    {
+      "id": "stack-drafts",
+      "name": "Stack Drafts",
+      "description": "Users can minimize and stack their current email draft to a sidebar, allowing them to view and reference other emails while writing.",
+      "start_timestamp": "00:23",
+      "end_timestamp": "00:30"
+    }
+  ],
+  "clips": [
+    {
+      "feature_id": "compose-and-send-email",
+      "feature_name": "Compose and Send Email",
+      "start_timestamp": "00:00:11",
+      "end_timestamp": "00:00:22",
+      "clip_path": "data/clips/01_compose_and_send_email.mp4"
+    },
+    {
+      "feature_id": "stack-drafts",
+      "feature_name": "Stack Drafts",
+      "start_timestamp": "00:00:23",
+      "end_timestamp": "00:00:30",
+      "clip_path": "data/clips/02_stack_drafts.mp4"
+    }
+  ],
+  "screens": [
+    {
+      "order": 1,
+      "name": "Intro Title Screen",
+      "description": "A purple title screen displaying the Zapmail logo and the text 'Sending and receiving emails' with a presenter speaking.",
+      "start_timestamp": "00:00:00",
+      "end_timestamp": "00:00:10",
+      "key_elements": [
+        "Zapmail logo",
+        "Title text: Sending and receiving emails",
+        "Presenter video feed"
+      ]
+    },
+    {
+      "order": 2,
+      "name": "Inbox Dashboard",
+      "description": "The main application interface showing a list of email threads on the left and a selected conversation view in the center.",
+      "start_timestamp": "00:00:10",
+      "end_timestamp": "00:00:11",
+      "key_elements": [
+        "Sidebar with email list",
+        "Conversation view",
+        "Compose button",
+        "Search bar"
+      ]
+    },
+    {
+      "order": 3,
+      "name": "Compose Message Modal",
+      "description": "A 'New Message' pop-up window appears in the bottom right corner where the user enters recipient details and the message body.",
+      "start_timestamp": "00:00:11",
+      "end_timestamp": "00:00:25",
+      "key_elements": [
+        "New Message modal",
+        "To field",
+        "Cc field",
+        "Subject field",
+        "Message body area"
+      ]
+    },
+    {
+      "order": 4,
+      "name": "Draft Stacking View",
+      "description": "The draft message is minimized and docked to a sidebar on the right, allowing the user to browse other emails in the main view while keeping the draft accessible.",
+      "start_timestamp": "00:00:25",
+      "end_timestamp": "00:00:30",
+      "key_elements": [
+        "Right sidebar with docked draft",
+        "Main inbox view",
+        "Email list navigation"
+      ]
+    }
+  ],
+  "flow": {
+    "flow_title": "Composing and Stacking Emails",
+    "flow_goal": "To compose a new email, add recipients, and utilize the draft stacking feature to reference other emails simultaneously.",
+    "steps": [
+      {
+        "step_number": 1,
+        "title": "Initiate New Email",
+        "description": "The user starts the process of creating a new email message.",
+        "user_action": "Click on the 'Compose' button located in the top right header.",
+        "ui_context": "Main email dashboard view.",
+        "system_response": "A 'New Message' pop-up window appears in the bottom right corner of the screen.",
+        "start_timestamp": "00:00:11",
+        "end_timestamp": "00:00:13"
+      },
+      {
+        "step_number": 2,
+        "title": "Enter Primary Recipient",
+        "description": "The user specifies the primary recipient for the email.",
+        "user_action": "Type the recipient's email address into the 'To' field.",
+        "ui_context": "New Message pop-up window.",
+        "system_response": "The email address is accepted and displayed in the field.",
+        "start_timestamp": "00:00:13",
+        "end_timestamp": "00:00:16"
+      },
+      {
+        "step_number": 3,
+        "title": "Add CC Recipient",
+        "description": "The user adds a secondary recipient to the carbon copy field.",
+        "user_action": "Click the 'Cc' icon on the right side of the 'To' field, then type the secondary email address.",
+        "ui_context": "New Message pop-up window.",
+        "system_response": "A 'Cc' input field expands below the 'To' field and populates with the typed address.",
+        "start_timestamp": "00:00:17",
+        "end_timestamp": "00:00:19"
+      },
+      {
+        "step_number": 4,
+        "title": "Draft Content",
+        "description": "The user fills in the subject line and the body of the email.",
+        "user_action": "Type 'New tools' in the Subject field and begin typing the message body.",
+        "ui_context": "New Message pop-up window.",
+        "system_response": "Text appears in the respective fields as typed.",
+        "start_timestamp": "00:00:19",
+        "end_timestamp": "00:00:22"
+      },
+      {
+        "step_number": 5,
+        "title": "Stack Draft",
+        "description": "The user minimizes the current draft to the side to view other content.",
+        "user_action": "Click the stack/minimize icon in the top right corner of the message window.",
+        "ui_context": "New Message pop-up window.",
+        "system_response": "The draft window shrinks and docks into a vertical sidebar on the right side of the screen.",
+        "start_timestamp": "00:00:23",
+        "end_timestamp": "00:00:26"
+      },
+      {
+        "step_number": 6,
+        "title": "Reference Existing Email",
+        "description": "The user navigates the inbox while the draft remains accessible.",
+        "user_action": "Click on an existing email thread in the main list.",
+        "ui_context": "Main inbox view with the draft stacked in the right sidebar.",
+        "system_response": "The selected email thread opens in the main view area while the draft remains docked on the right.",
+        "start_timestamp": "00:00:26",
+        "end_timestamp": "00:00:29"
+      }
+    ]
+  },
+  "interactions": [
+    {
+      "order": 1,
+      "name": "Open Compose Window",
+      "interaction_type": "Click",
+      "rationale": "The user initiates the process of creating a new email message.",
+      "description": "The user clicks the 'Compose' button located in the top right corner of the interface.",
+      "user_action": "Click 'Compose' button",
+      "ui_context": "Top navigation bar, right side",
+      "system_response": "A 'New Message' modal window opens in the bottom right corner.",
+      "start_timestamp": "00:00:11",
+      "end_timestamp": "00:00:12"
+    },
+    {
+      "order": 2,
+      "name": "Enter Recipient Email",
+      "interaction_type": "Input",
+      "rationale": "The user specifies the primary recipient for the email.",
+      "description": "The user types an email address into the 'To' field within the compose window.",
+      "user_action": "Type 'mark@binarytechnologies.io'",
+      "ui_context": "New Message modal, 'To' input field",
+      "system_response": "The email address is populated in the field.",
+      "start_timestamp": "00:00:13",
+      "end_timestamp": "00:00:16"
+    },
+    {
+      "order": 3,
+      "name": "Reveal Cc Field",
+      "interaction_type": "Click",
+      "rationale": "The user needs to copy another recipient on the email, requiring the Cc field to be visible.",
+      "description": "The user clicks the 'Cc' label/button on the right side of the recipient field.",
+      "user_action": "Click 'Cc' button",
+      "ui_context": "New Message modal, right side of 'To' field",
+      "system_response": "A new 'Cc' input field appears below the 'To' field.",
+      "start_timestamp": "00:00:17",
+      "end_timestamp": "00:00:17"
+    },
+    {
+      "order": 4,
+      "name": "Enter Cc Recipient",
+      "interaction_type": "Input",
+      "rationale": "The user adds a secondary recipient to the email.",
+      "description": "The user types an email address into the newly revealed 'Cc' field.",
+      "user_action": "Type 'meredith@binarytechnologies.io'",
+      "ui_context": "New Message modal, 'Cc' input field",
+      "system_response": "The secondary email address is populated.",
+      "start_timestamp": "00:00:17",
+      "end_timestamp": "00:00:19"
+    },
+    {
+      "order": 5,
+      "name": "Enter Subject Line",
+      "interaction_type": "Input",
+      "rationale": "The user provides a title for the email message.",
+      "description": "The user clicks into the subject line and types the subject of the email.",
+      "user_action": "Type 'New tools'",
+      "ui_context": "New Message modal, 'Subject' input field",
+      "system_response": "The text 'New tools' appears in the subject line.",
+      "start_timestamp": "00:00:20",
+      "end_timestamp": "00:00:21"
+    },
+    {
+      "order": 6,
+      "name": "Stack Draft",
+      "interaction_type": "Click",
+      "rationale": "The user minimizes the current draft to view other emails in the inbox for reference.",
+      "description": "The user clicks the stack/minimize icon in the header of the compose window.",
+      "user_action": "Click stack icon",
+      "ui_context": "New Message modal header, top right icons",
+      "system_response": "The compose window minimizes and docks into a vertical bar on the right side of the screen.",
+      "start_timestamp": "00:00:23",
+      "end_timestamp": "00:00:24"
+    },
+    {
+      "order": 7,
+      "name": "Browse Inbox",
+      "interaction_type": "Scroll",
+      "rationale": "The user searches for information in previous emails while the draft is minimized.",
+      "description": "The user scrolls down the main email list view.",
+      "user_action": "Scroll down",
+      "ui_context": "Main email list area",
+      "system_response": "The email list scrolls vertically to reveal older messages.",
+      "start_timestamp": "00:00:25",
+      "end_timestamp": "00:00:27"
+    },
+    {
+      "order": 8,
+      "name": "Restore Draft",
+      "interaction_type": "Click",
+      "rationale": "The user returns to the draft to continue writing after referencing other information.",
+      "description": "The user clicks the minimized draft icon in the right sidebar.",
+      "user_action": "Click docked draft icon",
+      "ui_context": "Right sidebar dock",
+      "system_response": "The 'New Message' modal expands back to its original size and position.",
+      "start_timestamp": "00:00:28",
+      "end_timestamp": "00:00:29"
+    }
+  ]
+}

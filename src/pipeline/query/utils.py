@@ -8,7 +8,7 @@ from src.pipeline.base import PipelineContext
 from src.pipeline.query.query_planner import QueryPlan
 from src.pipeline.repository.utils import coerce_str
 
-DEFAULT_REPOSITORY_PATH = Path("data/json")
+DEFAULT_REPOSITORY_PATH = Path("data/json/repo")
 DEFAULT_TOP_K = 5
 
 

@@ -9,7 +9,7 @@ from pydantic import BaseModel, Field
 from src.pipeline.base import Node, PipelineContext, _to_jsonable
 
 
-DEFAULT_EXPORT_PATH = Path("data/json/repository_context.json")
+DEFAULT_EXPORT_DIR = Path("data/json/repo")
 
 
 class ExportInputs(BaseModel):
@@ -26,7 +26,7 @@ class ExportNode(Node):
 
     def run(self, context: PipelineContext) -> dict[str, Any]:
         inputs = ExportInputs.model_validate(context.inputs)
-        output_path = Path(inputs.output_path) if inputs.output_path else DEFAULT_EXPORT_PATH
+        output_path = Path(inputs.output_path) if inputs.output_path else _default_output_path(context)
 
         payload = _build_export_payload(context)
         output_path.parent.mkdir(parents=True, exist_ok=True)
@@ -55,6 +55,15 @@ def _build_export_payload(context: PipelineContext) -> dict[str, Any]:
         "flow": _get_flow(flow_payload),
         "interactions": _get_list(interaction_payload, "interactions"),
     }
+
+
+def _default_output_path(context: PipelineContext) -> Path:
+    video_path = context.inputs.get("video_path", "")
+    if video_path:
+        name = Path(str(video_path)).stem or "repository_context"
+    else:
+        name = "repository_context"
+    return DEFAULT_EXPORT_DIR / f"{name}.json"
 
 
 def _get_dict(payload: Any, key: str) -> dict[str, Any]:
