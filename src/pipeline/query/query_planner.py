@@ -9,7 +9,7 @@ from langchain_core.runnables import RunnableLambda
 from pydantic import BaseModel, Field
 
 from src.config import llm_client
-from src.pipeline.base import Node, PipelineContext
+from src.pipeline.base import ConditionalNode, PipelineContext
 from src.pipeline.repository.utils import coerce_str, extract_json
 
 SYSTEM_PROMPT = (
@@ -112,9 +112,17 @@ class QueryPlanner:
         return RunnableLambda(build_messages) | self.model | self.parser
 
 
-class QueryPlanNode(Node):
+class QueryPlanNode(ConditionalNode):
     name: str = "query_plan"
     depends_on: list[str] = []
+    route_map: dict[str, str] = Field(
+        default_factory=lambda: {
+            "feature": "similar_feature_search",
+            "flow": "similar_flow_search",
+            "screen": "similar_screen_search",
+            "interaction": "similar_interaction_search",
+        }
+    )
     planner: QueryPlanner = Field(default_factory=QueryPlanner)
 
     def run(self, context: PipelineContext) -> QueryPlan:
@@ -124,6 +132,12 @@ class QueryPlanNode(Node):
     async def arun(self, context: PipelineContext) -> QueryPlan:
         inputs = QueryPlanInputs.model_validate(context.inputs)
         return await self.planner.aplan(inputs.query, inputs.app_name)
+
+    def route(self, context: PipelineContext) -> str:
+        plan = context.get_artifact(self.name)
+        if isinstance(plan, QueryPlan) and plan.target_level:
+            return plan.target_level
+        return "feature"
 
 
 def _parse_filters(filters_payload: Any) -> QueryPlanFilters:

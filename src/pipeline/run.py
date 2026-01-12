@@ -33,12 +33,11 @@ def build_query_pipeline() -> Pipeline:
     return Pipeline(
         nodes=[
             QueryPlanNode(),
-            # LoadRepositoryNode(),
-            # RetrieveEvidenceNode(),
-            # DecideDepthNode(),
-            # ExpandEvidenceNode(),
-            # ProjectResponseNode(),
-            # FinalGuardrailsNode(),
+            SimilarFeatureSearchNode(),
+            SimilarFlowSearchNode(),
+            SimilarScreenSearchNode(),
+            SimilarInteractionSearchNode(),
+            QueryExportNode(export_style="query_search"),
         ]
     )
 
@@ -46,6 +45,7 @@ def build_query_pipeline() -> Pipeline:
 def run_pipeline(inputs: dict[str, Any], pipeline_type: str) -> PipelineContext:
     pipeline = _select_pipeline(pipeline_type)
     context = PipelineContext(inputs=inputs)
+    context.metadata["pipeline_type"] = pipeline_type
     return pipeline.run(context)
 
 

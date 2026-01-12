@@ -13,3 +13,4 @@ class LLMClients:
 
     # models for quering
     QUERY_PLANNER_MODEL = ChatGoogleGenerativeAI(model="gemini-3-pro-preview", temperature=0)
+    QUERY_SEARCH_MODEL = ChatGoogleGenerativeAI(model="gemini-3-pro-preview", temperature=0)
