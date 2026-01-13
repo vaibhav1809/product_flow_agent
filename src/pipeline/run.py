@@ -37,7 +37,7 @@ def build_query_pipeline() -> Pipeline:
             SimilarFlowSearchNode(),
             SimilarScreenSearchNode(),
             SimilarInteractionSearchNode(),
-            QueryExportNode(export_style="query_search"),
+            QueryExportNode(),
         ]
     )
 
